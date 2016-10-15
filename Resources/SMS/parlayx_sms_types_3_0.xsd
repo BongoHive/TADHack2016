@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- November 3, 2006 -->
+<xsd:schema
+   targetNamespace="http://www.csapi.org/schema/parlayx/sms/v3_0"
+   xmlns:parlayx_sms_xsd="http://www.csapi.org/schema/parlayx/sms/v3_0"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+   <xsd:complexType name="DeliveryInformation">
+      <xsd:sequence>
+         <xsd:element name="address" type="xsd:anyURI"/>
+         <xsd:element name="deliveryStatus" type="parlayx_sms_xsd:DeliveryStatus"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="ScheduledDeliveryInformation">
+      <xsd:sequence>
+         <xsd:element name="deliveryStatus" type="parlayx_sms_xsd:ScheduledDeliveryStatus"/>
+         <xsd:element name="numberOfMessagesSent" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="SmsMessage">
+      <xsd:sequence>
+         <xsd:element name="message" type="xsd:string"/>
+         <xsd:element name="senderAddress" type="xsd:anyURI"/>
+         <xsd:element name="smsServiceActivationNumber" type="xsd:anyURI"/>
+         <xsd:element name="dateTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:simpleType name="DeliveryStatus">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="DeliveredToNetwork"/>
+         <xsd:enumeration value="DeliveryUncertain"/>
+         <xsd:enumeration value="DeliveryImpossible"/>
+         <xsd:enumeration value="MessageWaiting"/>
+         <xsd:enumeration value="DeliveredToTerminal"/>
+         <xsd:enumeration value="DeliveryNotificationNotSupported"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="ScheduledDeliveryStatus">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Scheduled"/>
+         <xsd:enumeration value="NotSent"/>
+         <xsd:enumeration value="Sent"/>
+         <xsd:enumeration value="Cancelled"/>
+         <xsd:enumeration value="PartiallySent"/>
+         <xsd:enumeration value="StatusUnavailable"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="SmsFormat">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Ems"/>
+         <xsd:enumeration value="SmartMessaging"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+</xsd:schema>

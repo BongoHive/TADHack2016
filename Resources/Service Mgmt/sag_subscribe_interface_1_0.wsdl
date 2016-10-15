@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sag_subscribe_manage="http://www.csapi.org/wsdl/parlayx/subscribe/manage/v1_0/interface" xmlns:sag_subscribe_manage_xsd="http://www.csapi.org/schema/parlayx/subscribe/v1_0" xmlns:sag_subscribe_manage_local_xsd="http://www.csapi.org/schema/parlayx/subscribe/manage/v1_0/local" name="sag_subscribe_interface" targetNamespace="http://www.csapi.org/wsdl/parlayx/subscribe/manage/v1_0/interface">
+	<wsdl:types>
+		<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/parlayx/subscribe/manage/v1_0/local">
+			<xsd:import namespace="http://www.csapi.org/schema/parlayx/subscribe/v1_0" schemaLocation="sag_subscribe_types_1_0.xsd"/>
+			<xsd:element name="subscribeServiceRequest" type="sag_subscribe_manage_local_xsd:subscribeServiceRequest"/>
+			<xsd:complexType name="subscribeServiceRequest">
+				<xsd:sequence>
+					<xsd:element name="subscribeServiceReq" type="sag_subscribe_manage_xsd:SubscribeServiceReq"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="subscribeServiceResponse" type="sag_subscribe_manage_local_xsd:subscribeServiceResponse"/>
+			<xsd:complexType name="subscribeServiceResponse">
+				<xsd:sequence>
+					<xsd:element name="subscribeServiceRsp" type="sag_subscribe_manage_xsd:SubscribeServiceRsp"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="unSubscribeServiceRequest" type="sag_subscribe_manage_local_xsd:unSubscribeServiceRequest"/>
+			<xsd:complexType name="unSubscribeServiceRequest">
+				<xsd:sequence>
+					<xsd:element name="unSubscribeServiceReq" type="sag_subscribe_manage_xsd:UnSubscribeServiceReq"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="unSubscribeServiceResponse" type="sag_subscribe_manage_local_xsd:unSubscribeServiceResponse"/>
+			<xsd:complexType name="unSubscribeServiceResponse">
+				<xsd:sequence>
+					<xsd:element name="unSubscribeServiceRsp" type="sag_subscribe_manage_xsd:UnSubscribeServiceRsp"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="subscribeProductRequest" type="sag_subscribe_manage_local_xsd:subscribeProductRequest"/>
+			<xsd:complexType name="subscribeProductRequest">
+				<xsd:sequence>
+					<xsd:element name="subscribeProductReq" type="sag_subscribe_manage_xsd:SubscribeProductReq"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="subscribeProductResponse" type="sag_subscribe_manage_local_xsd:subscribeProductResponse"/>
+			<xsd:complexType name="subscribeProductResponse">
+				<xsd:sequence>
+					<xsd:element name="subscribeProductRsp" type="sag_subscribe_manage_xsd:SubscribeProductRsp"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="unSubscribeProductRequest" type="sag_subscribe_manage_local_xsd:unSubscribeProductRequest"/>
+			<xsd:complexType name="unSubscribeProductRequest">
+				<xsd:sequence>
+					<xsd:element name="unSubscribeProductReq" type="sag_subscribe_manage_xsd:UnSubscribeProductReq"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="unSubscribeProductResponse" type="sag_subscribe_manage_local_xsd:unSubscribeProductResponse"/>
+			<xsd:complexType name="unSubscribeProductResponse">
+				<xsd:sequence>
+					<xsd:element name="unSubscribeProductRsp" type="sag_subscribe_manage_xsd:UnSubscribeProductRsp"/>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="SubscribeManage_subscribeServiceRequest">
+		<wsdl:part name="parameters" element="sag_subscribe_manage_local_xsd:subscribeServiceRequest"/>
+	</wsdl:message>
+	<wsdl:message name="SubscribeManage_subscribeServiceResponse">
+		<wsdl:part name="result" element="sag_subscribe_manage_local_xsd:subscribeServiceResponse"/>
+	</wsdl:message>
+	<wsdl:message name="SubscribeManage_unSubscribeServiceRequest">
+		<wsdl:part name="parameters" element="sag_subscribe_manage_local_xsd:unSubscribeServiceRequest"/>
+	</wsdl:message>
+	<wsdl:message name="SubscribeManage_unSubscribeServiceResponse">
+		<wsdl:part name="result" element="sag_subscribe_manage_local_xsd:unSubscribeServiceResponse"/>
+	</wsdl:message>
+	<wsdl:message name="SubscribeManage_subscribeProductRequest">
+		<wsdl:part name="parameters" element="sag_subscribe_manage_local_xsd:subscribeProductRequest"/>
+	</wsdl:message>
+	<wsdl:message name="SubscribeManage_subscribeProductResponse">
+		<wsdl:part name="result" element="sag_subscribe_manage_local_xsd:subscribeProductResponse"/>
+	</wsdl:message>
+	<wsdl:message name="SubscribeManage_unSubscribeProductRequest">
+	<wsdl:part name="parameters" element="sag_subscribe_manage_local_xsd:unSubscribeProductRequest"/>
+	</wsdl:message>
+	<wsdl:message name="SubscribeManage_unSubscribeProductResponse">
+		<wsdl:part name="result" element="sag_subscribe_manage_local_xsd:unSubscribeProductResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="SubscribeManage">
+		<wsdl:operation name="subscribeService">
+			<wsdl:input message="sag_subscribe_manage:SubscribeManage_subscribeServiceRequest"/>
+			<wsdl:output message="sag_subscribe_manage:SubscribeManage_subscribeServiceResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="unSubscribeService">
+			<wsdl:input message="sag_subscribe_manage:SubscribeManage_unSubscribeServiceRequest"/>
+			<wsdl:output message="sag_subscribe_manage:SubscribeManage_unSubscribeServiceResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="subscribeProduct">
+			<wsdl:input message="sag_subscribe_manage:SubscribeManage_subscribeProductRequest"/>
+			<wsdl:output message="sag_subscribe_manage:SubscribeManage_subscribeProductResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="unSubscribeProduct">
+			<wsdl:input message="sag_subscribe_manage:SubscribeManage_unSubscribeProductRequest"/>
+			<wsdl:output message="sag_subscribe_manage:SubscribeManage_unSubscribeProductResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

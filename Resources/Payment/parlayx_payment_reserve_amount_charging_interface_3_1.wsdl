@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- March 8, 2007 -->
+<wsdl:definitions
+   name="parlayx_payment_reserve_amount_charging_interface"
+   targetNamespace="http://www.csapi.org/wsdl/parlayx/payment/reserve_amount_charging/v3_1/interface"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:parlayx_payment_reserve_amount_charging="http://www.csapi.org/wsdl/parlayx/payment/reserve_amount_charging/v3_1/interface"
+   xmlns:parlayx_common_faults="http://www.csapi.org/wsdl/parlayx/common/v3_0/faults"
+   xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v3_1"
+   xmlns:parlayx_payment_xsd="http://www.csapi.org/schema/parlayx/payment/v3_0"
+   xmlns:parlayx_payment_reserve_amount_charging_local_xsd="http://www.csapi.org/schema/parlayx/payment/reserve_amount_charging/v3_1/local">
+
+   <wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/common/v3_0/faults" location="parlayx_common_faults_3_0.wsdl"/>
+
+   <wsdl:types>
+      <xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/parlayx/payment/reserve_amount_charging/v3_1/local">
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/common/v3_1" schemaLocation="parlayx_common_types_3_1.xsd"/>
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/payment/v3_0" schemaLocation="parlayx_payment_types_3_0.xsd"/>
+
+         <xsd:element name="reserveAmount" type="parlayx_payment_reserve_amount_charging_local_xsd:reserveAmount"/>
+         <xsd:complexType name="reserveAmount">
+            <xsd:sequence>
+               <xsd:element name="endUserIdentifier" type="xsd:anyURI"/>
+               <xsd:element name="charge" type="parlayx_common_xsd:ChargingInformation"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="reserveAmountResponse" type="parlayx_payment_reserve_amount_charging_local_xsd:reserveAmountResponse"/>
+         <xsd:complexType name="reserveAmountResponse">
+            <xsd:sequence>
+               <xsd:element name="result" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="reserveAdditionalAmount" type="parlayx_payment_reserve_amount_charging_local_xsd:reserveAdditionalAmount"/>
+         <xsd:complexType name="reserveAdditionalAmount">
+            <xsd:sequence>
+               <xsd:element name="reservationIdentifier" type="xsd:string"/>
+               <xsd:element name="charge" type="parlayx_common_xsd:ChargingInformation"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="reserveAdditionalAmountResponse" type="parlayx_payment_reserve_amount_charging_local_xsd:reserveAdditionalAmountResponse"/>
+         <xsd:complexType name="reserveAdditionalAmountResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+
+         <xsd:element name="chargeReservation" type="parlayx_payment_reserve_amount_charging_local_xsd:chargeReservation"/>
+         <xsd:complexType name="chargeReservation">
+            <xsd:sequence>
+               <xsd:element name="reservationIdentifier" type="xsd:string"/>
+               <xsd:element name="charge" type="parlayx_common_xsd:ChargingInformation"/>
+               <xsd:element name="referenceCode" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="chargeReservationResponse" type="parlayx_payment_reserve_amount_charging_local_xsd:chargeReservationResponse"/>
+         <xsd:complexType name="chargeReservationResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+
+         <xsd:element name="releaseReservation" type="parlayx_payment_reserve_amount_charging_local_xsd:releaseReservation"/>
+         <xsd:complexType name="releaseReservation">
+            <xsd:sequence>
+               <xsd:element name="reservationIdentifier" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="releaseReservationResponse" type="parlayx_payment_reserve_amount_charging_local_xsd:releaseReservationResponse"/>
+         <xsd:complexType name="releaseReservationResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+      </xsd:schema>
+   </wsdl:types>
+
+   <wsdl:message name="ReserveAmountCharging_reserveAmountRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_reserve_amount_charging_local_xsd:reserveAmount"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveAmountCharging_reserveAmountResponse">
+      <wsdl:part name="result" element="parlayx_payment_reserve_amount_charging_local_xsd:reserveAmountResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveAmountCharging_reserveAdditionalAmountRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_reserve_amount_charging_local_xsd:reserveAdditionalAmount"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveAmountCharging_reserveAdditionalAmountResponse">
+      <wsdl:part name="result" element="parlayx_payment_reserve_amount_charging_local_xsd:reserveAdditionalAmountResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveAmountCharging_chargeReservationRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_reserve_amount_charging_local_xsd:chargeReservation"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveAmountCharging_chargeReservationResponse">
+      <wsdl:part name="result" element="parlayx_payment_reserve_amount_charging_local_xsd:chargeReservationResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveAmountCharging_releaseReservationRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_reserve_amount_charging_local_xsd:releaseReservation"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveAmountCharging_releaseReservationResponse">
+      <wsdl:part name="result" element="parlayx_payment_reserve_amount_charging_local_xsd:releaseReservationResponse"/>
+   </wsdl:message>
+
+   <wsdl:portType name="ReserveAmountCharging">
+      <wsdl:operation name="reserveAmount">
+         <wsdl:input message="parlayx_payment_reserve_amount_charging:ReserveAmountCharging_reserveAmountRequest"/>
+         <wsdl:output message="parlayx_payment_reserve_amount_charging:ReserveAmountCharging_reserveAmountResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="reserveAdditionalAmount">
+         <wsdl:input message="parlayx_payment_reserve_amount_charging:ReserveAmountCharging_reserveAdditionalAmountRequest"/>
+         <wsdl:output message="parlayx_payment_reserve_amount_charging:ReserveAmountCharging_reserveAdditionalAmountResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="chargeReservation">
+         <wsdl:input message="parlayx_payment_reserve_amount_charging:ReserveAmountCharging_chargeReservationRequest"/>
+         <wsdl:output message="parlayx_payment_reserve_amount_charging:ReserveAmountCharging_chargeReservationResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="releaseReservation">
+         <wsdl:input message="parlayx_payment_reserve_amount_charging:ReserveAmountCharging_releaseReservationRequest"/>
+         <wsdl:output message="parlayx_payment_reserve_amount_charging:ReserveAmountCharging_releaseReservationResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

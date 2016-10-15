@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- July 14, 2005 -->
+<wsdl:definitions
+   name="osg_ussd_notification_service"
+   targetNamespace="http://www.csapi.org/wsdl/parlayx/ussd/notification/v1_0/service"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:tns="http://www.csapi.org/wsdl/parlayx/ussd/notification/v1_0/service"
+   xmlns:interface="http://www.csapi.org/wsdl/parlayx/ussd/notification/v1_0/interface">
+
+   <wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/ussd/notification/v1_0/interface" location="osg_ussd_notification_interface_1_0.wsdl"/>
+
+   <wsdl:binding name="NetworkNotifyBinding" type="interface:NetworkNotify">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      
+      <wsdl:operation name="notifyUssdReception">
+         <soap:operation soapAction="" style="document"/>
+            <wsdl:input>
+               <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+               <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+               <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+      </wsdl:operation>
+      
+      <wsdl:operation name="notifyUssdAbort">
+         <soap:operation soapAction="" style="document"/>
+            <wsdl:input>
+               <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+               <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+               <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+      </wsdl:operation>
+      
+   </wsdl:binding>
+   
+
+   <wsdl:service name="NetworkNotifyService">
+      <wsdl:port name="NetworkNotify" binding="tns:NetworkNotifyBinding">
+         <soap:address location="http://localhost:9080/NetworkNotifyService/services/NetworkNotify"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

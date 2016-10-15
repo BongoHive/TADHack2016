@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- March 8, 2007 -->
+<wsdl:definitions
+   name="account_management_notification_manager_interface"
+   targetNamespace="http://www.csapi.org/wsdl/parlayx/account_management/notification_manager/v3_2/interface"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:account_management_notification_manager="http://www.csapi.org/wsdl/parlayx/account_management/notification_manager/v3_2/interface"
+   xmlns:parlayx_common_faults="http://www.csapi.org/wsdl/parlayx/common/v3_0/faults"
+   xmlns:parlayx_account_management_xsd="http://www.csapi.org/schema/parlayx/account_management/v3_0"
+   xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v3_1"
+   xmlns:account_management_notification_manager_local_xsd="http://www.csapi.org/schema/parlayx/account_management/notification_manager/v3_2/local">
+
+   <wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/common/v3_0/faults" location="parlayx_common_faults_3_0.wsdl"/>
+
+   <wsdl:types>
+      <xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/parlayx/account_management/notification_manager/v3_2/local">
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/account_management/v3_0" schemaLocation="parlayx_account_management_types_3_0.xsd"/>
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/common/v3_1" schemaLocation="parlayx_common_types_3_1.xsd"/>
+
+         <xsd:element name="startNotification" type="account_management_notification_manager_local_xsd:startNotification"/>
+         <xsd:complexType name="startNotification">
+            <xsd:sequence>
+               <xsd:element name="reference" type="parlayx_common_xsd:SimpleReference"/>
+               <xsd:element name="endUserIdentifier" type="xsd:anyURI"/>
+               <xsd:element name="criteria" type="parlayx_account_management_xsd:AccountChangedEvent" minOccurs="0" maxOccurs="unbounded"/>
+               <xsd:element name="balanceTypes" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="startNotificationResponse" type="account_management_notification_manager_local_xsd:startNotificationResponse"/>
+         <xsd:complexType name="startNotificationResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+
+         <xsd:element name="endNotification" type="account_management_notification_manager_local_xsd:endNotification"/>
+         <xsd:complexType name="endNotification">
+            <xsd:sequence>
+               <xsd:element name="correlator" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="endNotificationResponse" type="account_management_notification_manager_local_xsd:endNotificationResponse"/>
+         <xsd:complexType name="endNotificationResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+      </xsd:schema>
+   </wsdl:types>
+
+   <wsdl:message name="AccountManagementNotificationManager_startNotificationRequest">
+      <wsdl:part name="parameters" element="account_management_notification_manager_local_xsd:startNotification"/>
+   </wsdl:message>
+
+   <wsdl:message name="AccountManagementNotificationManager_startNotificationResponse">
+      <wsdl:part name="result" element="account_management_notification_manager_local_xsd:startNotificationResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="AccountManagementNotificationManager_endNotificationRequest">
+      <wsdl:part name="parameters" element="account_management_notification_manager_local_xsd:endNotification"/>
+   </wsdl:message>
+
+   <wsdl:message name="AccountManagementNotificationManager_endNotificationResponse">
+      <wsdl:part name="result" element="account_management_notification_manager_local_xsd:endNotificationResponse"/>
+   </wsdl:message>
+
+   <wsdl:portType name="AccountManagementNotificationManager">
+      <wsdl:operation name="startNotification">
+         <wsdl:input message="account_management_notification_manager:AccountManagementNotificationManager_startNotificationRequest"/>
+         <wsdl:output message="account_management_notification_manager:AccountManagementNotificationManager_startNotificationResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="endNotification">
+         <wsdl:input message="account_management_notification_manager:AccountManagementNotificationManager_endNotificationRequest"/>
+         <wsdl:output message="account_management_notification_manager:AccountManagementNotificationManager_endNotificationResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

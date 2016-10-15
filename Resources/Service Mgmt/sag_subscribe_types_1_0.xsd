@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+   targetNamespace="http://www.csapi.org/schema/parlayx/subscribe/v1_0"
+   xmlns:sag_subscribe_xsd="http://www.csapi.org/schema/parlayx/subscribe/v1_0"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:complexType name="SubscribeServiceReq">
+      <xsd:sequence>
+         <xsd:element name="userId" type="xsd:string"/>
+         <xsd:element name="productId" type="xsd:string" />
+	 <xsd:element name="operator" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	 <xsd:element name="operatorType" type="xsd:int" />
+      </xsd:sequence>
+   </xsd:complexType>
+   
+       <xsd:complexType name="UnSubscribeServiceReq">
+      <xsd:sequence>
+         <xsd:element name="userId" type="xsd:string"/>
+         <xsd:element name="productId" type="xsd:string" />
+	 <xsd:element name="operator" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	 <xsd:element name="operatorType" type="xsd:int" />
+	 <xsd:element name="reason" type="xsd:int" />
+      </xsd:sequence>
+   </xsd:complexType>
+   
+    <xsd:complexType name="SubscribeServiceRsp">
+      <xsd:sequence>
+      <xsd:element name="resultCode" type="xsd:int"/>
+         <xsd:element name="MSISDN" type="xsd:string"/>
+         <xsd:element name="spId" type="xsd:string" />
+         <xsd:element name="serviceId" type="xsd:string" />
+         <xsd:element name="subscriptionConflictNum" type="xsd:int"/>         
+	 <xsd:element name="subscriptionConflictTypes" type="xsd:string"/>
+	 <xsd:element name="subscriptionConflictSpIds" type="xsd:string"/>
+	  <xsd:element name="subscriptionConflictServiceIds" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>   
+   
+   <xsd:complexType name="UnSubscribeServiceRsp">
+      <xsd:sequence>
+      <xsd:element name="resultCode" type="xsd:int"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   
+    <xsd:complexType name="SubscribeProductReq">
+      <xsd:sequence>
+	 <xsd:element name="userID" type="sag_subscribe_xsd:UserID"/>
+	 <xsd:element name="subInfo" type="sag_subscribe_xsd:SubInfo" />
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="SubscribeProductRsp">
+      <xsd:sequence>
+      <xsd:element name="result" type="xsd:string"/>
+         <xsd:element name="resultDescription" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+   </xsd:complexType>   
+   
+   <xsd:complexType name="UnSubscribeProductReq">
+      <xsd:sequence>
+	 <xsd:element name="userID" type="sag_subscribe_xsd:UserID"/>
+	 <xsd:element name="subInfo" type="sag_subscribe_xsd:SubInfo" />
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="UnSubscribeProductRsp">
+      <xsd:sequence>
+      <xsd:element name="result" type="xsd:string"/>
+         <xsd:element name="resultDescription" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+   </xsd:complexType> 
+   
+   <xsd:complexType name="UserID">
+      <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string"/>
+      <xsd:element name="type" type="xsd:int"/>
+      </xsd:sequence>
+   </xsd:complexType> 
+   
+   <xsd:complexType name="SubInfo">
+      <xsd:sequence>
+      <xsd:element name="productID" type="xsd:string"/>
+      <xsd:element name="operCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="isAutoExtend" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="channelID" type="xsd:int"/>
+      <xsd:element name="extensionInfo" type="sag_subscribe_xsd:NamedParameterList" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+   </xsd:complexType> 
+
+   <xsd:complexType name="NamedParameterList">
+      <xsd:sequence>
+      <xsd:element name="namedParameters" type="sag_subscribe_xsd:NamedParameter" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType> 
+
+   <xsd:complexType name="NamedParameter">
+      <xsd:sequence>
+      <xsd:element name="key" type="xsd:string"/>
+      <xsd:element name="value" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType> 
+
+</xsd:schema>

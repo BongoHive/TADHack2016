@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- March 8, 2007 -->
+<wsdl:definitions
+   name="account_management_notification_service"
+   targetNamespace="http://www.csapi.org/wsdl/parlayx/account_management/notification/v3_2/service"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:tns="http://www.csapi.org/wsdl/parlayx/account_management/notification/v3_2/service"
+   xmlns:interface="http://www.csapi.org/wsdl/parlayx/account_management/notification/v3_2/interface">
+
+   <wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/account_management/notification/v3_2/interface" location="parlayx_account_management_notification_interface_3_2.wsdl"/>
+
+   <wsdl:binding name="AccountManagementNotificationBinding" type="interface:AccountManagementNotification">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="accountCharged">
+         <soap:operation soapAction="" style="document"/>
+            <wsdl:input>
+               <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+               <soap:body use="literal"/>
+            </wsdl:output>
+      </wsdl:operation>
+
+      <wsdl:operation name="accountRecharged">
+         <soap:operation soapAction="" style="document"/>
+            <wsdl:input>
+               <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+               <soap:body use="literal"/>
+            </wsdl:output>
+      </wsdl:operation>
+
+      <wsdl:operation name="accountLow">
+         <soap:operation soapAction="" style="document"/>
+            <wsdl:input>
+               <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+               <soap:body use="literal"/>
+            </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+
+   <wsdl:service name="AccountManagementNotificationService">
+      <wsdl:port name="AccountManagementNotification" binding="tns:AccountManagementNotificationBinding">
+         <soap:address location="http://localhost:9080/AccountManagementNotificationService/services/AccountManagementNotification"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

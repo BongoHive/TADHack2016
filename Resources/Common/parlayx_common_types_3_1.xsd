@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- March 7, 2007 -->
+<xsd:schema
+   targetNamespace="http://www.csapi.org/schema/parlayx/common/v3_1"
+   xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v3_1"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+   <xsd:complexType name="TimeMetric">
+      <xsd:sequence>
+         <xsd:element name="metric" type="parlayx_common_xsd:TimeMetrics"/>
+         <xsd:element name="units" type="xsd:int"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="ChargingInformation">
+      <xsd:sequence>
+         <xsd:element name="description" type="xsd:string"/>
+         <xsd:element name="currency" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="amount" type="xsd:decimal" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="code" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="SimpleReference">
+      <xsd:sequence>
+         <xsd:element name="endpoint" type="xsd:anyURI"/>
+         <xsd:element name="interfaceName" type="xsd:string"/>
+         <xsd:element name="correlator" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="ServiceError">
+      <xsd:sequence>
+         <xsd:element name="messageId" type="xsd:string"/>
+         <xsd:element name="text" type="xsd:string"/>
+         <xsd:element name="variables" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="CallParticipantInformation">
+      <xsd:sequence>
+         <xsd:element name="callParticipantIdentifier" type="xsd:anyURI"/>
+         <xsd:element name="callParticipantStatus" type="parlayx_common_xsd:CallParticipantStatus"/>
+         <xsd:element name="callParticipantStartTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="callParticipantDuration" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="callParticipantTerminationCause" type="parlayx_common_xsd:CallParticipantTerminationCause" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="mediaInfo" type="parlayx_common_xsd:MediaInfo" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="CallSession">
+      <xsd:sequence>
+         <xsd:element name="callSessionIdentifier" type="xsd:string"/>
+         <xsd:element name="callParticipantInformation" type="parlayx_common_xsd:CallParticipantInformation" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="MediaInfo">
+      <xsd:sequence>
+         <xsd:element name="media" type="parlayx_common_xsd:Media"/>
+         <xsd:element name="mediaDirection" type="parlayx_common_xsd:MediaDirection"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:simpleType name="TimeMetrics">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Millisecond"/>
+         <xsd:enumeration value="Second"/>
+         <xsd:enumeration value="Minute"/>
+         <xsd:enumeration value="Hour"/>
+         <xsd:enumeration value="Day"/>
+         <xsd:enumeration value="Week"/>
+         <xsd:enumeration value="Month"/>
+         <xsd:enumeration value="Year"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="CallParticipantStatus">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="CallParticipantInitial"/>
+         <xsd:enumeration value="CallParticipantConnected"/>
+         <xsd:enumeration value="CallParticipantTerminated"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="CallParticipantTerminationCause">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="CallParticipantNoAnswer"/>
+         <xsd:enumeration value="CallParticipantBusy"/>
+         <xsd:enumeration value="CallParticipantNotReachable"/>
+         <xsd:enumeration value="CallParticipantHangUp"/>
+         <xsd:enumeration value="CallParticipantAborted"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="Media">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Audio"/>
+         <xsd:enumeration value="Video"/>
+         <xsd:enumeration value="Chat"/>
+         <xsd:enumeration value="Data"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="MediaDirection">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="In"/>
+         <xsd:enumeration value="Out"/>
+         <xsd:enumeration value="InOut"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:element name="ServiceException" type="parlayx_common_xsd:ServiceException"/>
+   <xsd:complexType name="ServiceException">
+      <xsd:sequence>
+         <xsd:element name="messageId" type="xsd:string"/>
+         <xsd:element name="text" type="xsd:string"/>
+         <xsd:element name="variables" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:element name="PolicyException" type="parlayx_common_xsd:PolicyException"/>
+   <xsd:complexType name="PolicyException">
+      <xsd:sequence>
+         <xsd:element name="messageId" type="xsd:string"/>
+         <xsd:element name="text" type="xsd:string"/>
+         <xsd:element name="variables" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

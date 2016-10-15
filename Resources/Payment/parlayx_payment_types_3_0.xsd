@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- June 7, 2006 -->
+<xsd:schema
+   targetNamespace="http://www.csapi.org/schema/parlayx/payment/v3_0"
+   xmlns:parlayx_payment_xsd="http://www.csapi.org/schema/parlayx/payment/v3_0"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+   <xsd:complexType name="Property">
+      <xsd:sequence>
+         <xsd:element name="name" type="xsd:string"/>
+         <xsd:element name="value" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="SplitType">
+      <xsd:sequence>
+         <xsd:element name="endUserIdentifier" type="xsd:anyURI"/>
+         <xsd:element name="percent" type="xsd:int"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

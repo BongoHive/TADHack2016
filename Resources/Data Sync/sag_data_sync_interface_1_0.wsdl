@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sag_data_sync="http://www.csapi.org/wsdl/parlayx/data/sync/v1_0/interface" xmlns:sag_data_sync_xsd="http://www.csapi.org/schema/parlayx/data/v1_0" xmlns:sag_data_sync_local_xsd="http://www.csapi.org/schema/parlayx/data/sync/v1_0/local" name="sag_data_sync_interface" targetNamespace="http://www.csapi.org/wsdl/parlayx/data/sync/v1_0/interface">
+	<wsdl:types>
+		<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/parlayx/data/sync/v1_0/local">
+			<xsd:import namespace="http://www.csapi.org/schema/parlayx/data/v1_0" schemaLocation="sag_data_sync_types_1_0.xsd"/>
+			<xsd:element name="syncSubscriptionData" type="sag_data_sync_local_xsd:syncSubscriptionData"/>
+			<xsd:complexType name="syncSubscriptionData">
+				<xsd:sequence>
+					<xsd:element name="MSISDN" type="xsd:string"/>
+					<xsd:element name="serviceId" type="xsd:string"/>
+					<xsd:element name="productId" type="xsd:string"/>
+					<xsd:element name="updateType" type="xsd:int"/>
+					<xsd:element name="productDetail" type="sag_data_sync_xsd:ProductDetail"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="syncSubscriptionDataResponse" type="sag_data_sync_local_xsd:syncSubscriptionDataResponse"/>
+			<xsd:complexType name="syncSubscriptionDataResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:int"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="changeMSISDN" type="sag_data_sync_local_xsd:changeMSISDN"/>
+			<xsd:complexType name="changeMSISDN">
+				<xsd:sequence>
+					<xsd:element name="MSISDN" type="xsd:string"/>
+					<xsd:element name="newMSISDN" type="xsd:string"/>
+					<xsd:element name="timeStamp" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="changeMSISDNResponse" type="sag_data_sync_local_xsd:changeMSISDNResponse"/>
+			<xsd:complexType name="changeMSISDNResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:int"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="syncOrderRelation" type="sag_data_sync_local_xsd:syncOrderRelation"/>
+			<xsd:complexType name="syncOrderRelation">
+				<xsd:sequence>
+					<xsd:element name="userID" type="sag_data_sync_xsd:UserID"/>
+					<xsd:element name="spID" type="xsd:string"/>
+					<xsd:element name="productID" type="xsd:string"/>
+					<xsd:element name="serviceID" type="xsd:string"/>
+					<xsd:element name="serviceList" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+					<xsd:element name="updateType" type="xsd:int"/>
+					<xsd:element name="updateTime" type="xsd:string"/>
+					<xsd:element name="updateDesc" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+					<xsd:element name="effectiveTime" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+					<xsd:element name="expiryTime" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+					<xsd:element name="extensionInfo" type="sag_data_sync_xsd:NamedParameterList" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="syncOrderRelationResponse" type="sag_data_sync_local_xsd:syncOrderRelationResponse"/>
+			<xsd:complexType name="syncOrderRelationResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:int"/>
+					<xsd:element name="resultDescription" type="xsd:string"/>
+					<xsd:element name="extensionInfo" type="sag_data_sync_xsd:NamedParameterList" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="syncMSISDNChange" type="sag_data_sync_local_xsd:syncMSISDNChange"/>
+			<xsd:complexType name="syncMSISDNChange">
+				<xsd:sequence>
+					<xsd:element name="MSISDN" type="xsd:string"/>
+					<xsd:element name="newMSISDN" type="xsd:string"/>
+					<xsd:element name="extensionInfo" type="sag_data_sync_xsd:NamedParameterList" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="syncMSISDNChangeResponse" type="sag_data_sync_local_xsd:syncMSISDNChangeResponse"/>
+			<xsd:complexType name="syncMSISDNChangeResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:int"/>
+					<xsd:element name="resultDescription" type="xsd:string"/>
+					<xsd:element name="extensionInfo" type="sag_data_sync_xsd:NamedParameterList" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="syncSubscriptionActive" type="sag_data_sync_local_xsd:syncSubscriptionActive"/>
+			<xsd:complexType name="syncSubscriptionActive">
+				<xsd:sequence>
+					<xsd:element name="userID" type="sag_data_sync_xsd:UserID"/>
+					<xsd:element name="spID" type="xsd:string"/>
+					<xsd:element name="productID" type="xsd:string"/>
+					<xsd:element name="serviceID" type="xsd:string"/>
+					<xsd:element name="extensionInfo" type="sag_data_sync_xsd:NamedParameterList" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="syncSubscriptionActiveResponse" type="sag_data_sync_local_xsd:syncSubscriptionActiveResponse"/>
+			<xsd:complexType name="syncSubscriptionActiveResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:int"/>
+					<xsd:element name="resultDescription" type="xsd:string"/>
+					<xsd:element name="extensionInfo" type="sag_data_sync_xsd:NamedParameterList" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="DataSync_syncSubscriptionDataRequest">
+		<wsdl:part name="parameters" element="sag_data_sync_local_xsd:syncSubscriptionData"/>
+	</wsdl:message>
+	<wsdl:message name="DataSync_syncSubscriptionDataResponse">
+		<wsdl:part name="result" element="sag_data_sync_local_xsd:syncSubscriptionDataResponse"/>
+	</wsdl:message>
+	<wsdl:message name="DataSync_changeMSISDNRequest">
+		<wsdl:part name="parameters" element="sag_data_sync_local_xsd:changeMSISDN"/>
+	</wsdl:message>
+	<wsdl:message name="DataSync_changeMSISDNResponse">
+		<wsdl:part name="result" element="sag_data_sync_local_xsd:changeMSISDNResponse"/>
+	</wsdl:message>
+	<wsdl:message name="DataSync_syncOrderRelationRequest">
+		<wsdl:part name="parameters" element="sag_data_sync_local_xsd:syncOrderRelation"/>
+	</wsdl:message>
+	<wsdl:message name="DataSync_syncOrderRelationResponse">
+		<wsdl:part name="result" element="sag_data_sync_local_xsd:syncOrderRelationResponse"/>
+	</wsdl:message>
+	<wsdl:message name="DataSync_syncMSISDNChangeRequest">
+		<wsdl:part name="parameters" element="sag_data_sync_local_xsd:syncMSISDNChange"/>
+	</wsdl:message>
+	<wsdl:message name="DataSync_syncMSISDNChangeResponse">
+		<wsdl:part name="result" element="sag_data_sync_local_xsd:syncMSISDNChangeResponse"/>
+	</wsdl:message>
+	<wsdl:message name="DataSync_syncSubscriptionActiveRequest">
+		<wsdl:part name="parameters" element="sag_data_sync_local_xsd:syncSubscriptionActive"/>
+	</wsdl:message>
+	<wsdl:message name="DataSync_syncSubscriptionActiveResponse">
+		<wsdl:part name="result" element="sag_data_sync_local_xsd:syncSubscriptionActiveResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="DataSync">
+		<wsdl:operation name="syncSubscriptionData">
+			<wsdl:input message="sag_data_sync:DataSync_syncSubscriptionDataRequest"/>
+			<wsdl:output message="sag_data_sync:DataSync_syncSubscriptionDataResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="changeMSISDN">
+			<wsdl:input message="sag_data_sync:DataSync_changeMSISDNRequest"/>
+			<wsdl:output message="sag_data_sync:DataSync_changeMSISDNResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="syncOrderRelation">
+			<wsdl:input message="sag_data_sync:DataSync_syncOrderRelationRequest"/>
+			<wsdl:output message="sag_data_sync:DataSync_syncOrderRelationResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="syncMSISDNChange">
+			<wsdl:input message="sag_data_sync:DataSync_syncMSISDNChangeRequest"/>
+			<wsdl:output message="sag_data_sync:DataSync_syncMSISDNChangeResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="syncSubscriptionActive">
+			<wsdl:input message="sag_data_sync:DataSync_syncSubscriptionActiveRequest"/>
+			<wsdl:output message="sag_data_sync:DataSync_syncSubscriptionActiveResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

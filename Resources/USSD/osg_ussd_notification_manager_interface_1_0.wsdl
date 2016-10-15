@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- May 30, 2006 -->
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:osg_ussd_notification_manager="http://www.csapi.org/wsdl/osg/ussd/notification_manager/v1_0/interface" xmlns:parlayx_common_faults="http://www.csapi.org/wsdl/parlayx/common/v2_0/faults" xmlns:osg_ussd_xsd="http://www.csapi.org/schema/osg/ussd/v1_0" xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v2_1" xmlns:osg_ussd_notification_manager_local_xsd="http://www.csapi.org/schema/osg/ussd/notification_manager/v1_0/local" name="osg_ussd_notification_manager_interface" targetNamespace="http://www.csapi.org/wsdl/osg/ussd/notification_manager/v1_0/interface">
+	<wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/common/v2_0/faults" location="parlayx_common_faults_2_0.wsdl"/>
+	<wsdl:types>
+		<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/osg/ussd/notification_manager/v1_0/local">
+			<!--			<xsd:import namespace="http://www.csapi.org/schema/osg/ussd/v1_0" 
+			            schemaLocation="osg_ussd_types_1_0.xsd"/>  -->
+			<xsd:import namespace="http://www.csapi.org/schema/parlayx/common/v2_1" schemaLocation="parlayx_common_types_2_1.xsd"/>
+			<xsd:element name="startUSSDNotification" type="osg_ussd_notification_manager_local_xsd:startUSSDNotification"/>
+			<xsd:complexType name="startUSSDNotification">
+				<xsd:sequence>
+					<xsd:element name="reference" type="parlayx_common_xsd:SimpleReference"/>
+					<xsd:element name="ussdServiceActivationNumber" type="xsd:anyURI"/>
+					<xsd:element name="criteria" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="startUSSDNotificationResponse" type="osg_ussd_notification_manager_local_xsd:startUSSDNotificationResponse"/>
+			<xsd:complexType name="startUSSDNotificationResponse">
+				<xsd:sequence/>
+			</xsd:complexType>
+			<xsd:element name="stopUSSDNotification" type="osg_ussd_notification_manager_local_xsd:stopUSSDNotification"/>
+			<xsd:complexType name="stopUSSDNotification">
+				<xsd:sequence>
+					<xsd:element name="correlator" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="stopUSSDNotificationResponse" type="osg_ussd_notification_manager_local_xsd:stopUSSDNotificationResponse"/>
+			<xsd:complexType name="stopUSSDNotificationResponse">
+				<xsd:sequence/>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="USSDNotificationManager_startUSSDNotificationRequest">
+		<wsdl:part name="parameters" element="osg_ussd_notification_manager_local_xsd:startUSSDNotification"/>
+	</wsdl:message>
+	<wsdl:message name="USSDNotificationManager_startUSSDNotificationResponse">
+		<wsdl:part name="result" element="osg_ussd_notification_manager_local_xsd:startUSSDNotificationResponse"/>
+	</wsdl:message>
+	<wsdl:message name="USSDNotificationManager_stopUSSDNotificationRequest">
+		<wsdl:part name="parameters" element="osg_ussd_notification_manager_local_xsd:stopUSSDNotification"/>
+	</wsdl:message>
+	<wsdl:message name="USSDNotificationManager_stopUSSDNotificationResponse">
+		<wsdl:part name="result" element="osg_ussd_notification_manager_local_xsd:stopUSSDNotificationResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="USSDNotificationManager">
+		<wsdl:operation name="startUSSDNotification">
+			<wsdl:input message="osg_ussd_notification_manager:USSDNotificationManager_startUSSDNotificationRequest"/>
+			<wsdl:output message="osg_ussd_notification_manager:USSDNotificationManager_startUSSDNotificationResponse"/>
+			<wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+			<wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+		</wsdl:operation>
+		<wsdl:operation name="stopUSSDNotification">
+			<wsdl:input message="osg_ussd_notification_manager:USSDNotificationManager_stopUSSDNotificationRequest"/>
+			<wsdl:output message="osg_ussd_notification_manager:USSDNotificationManager_stopUSSDNotificationResponse"/>
+			<wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+			<wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

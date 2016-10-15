@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sept 30, 2010 -->
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.csapi.org/wsdl/osg/ussd/notification_manager/v1_0/service" xmlns:interface="http://www.csapi.org/wsdl/osg/ussd/notification_manager/v1_0/interface" name="osg_ussd_notification_manager_service" targetNamespace="http://www.csapi.org/wsdl/osg/ussd/notification_manager/v1_0/service">
+	<wsdl:import namespace="http://www.csapi.org/wsdl/osg/ussd/notification_manager/v1_0/interface" location="osg_ussd_notification_manager_interface_1_0.wsdl"/>
+	<wsdl:binding name="USSDNotificationManagerBinding" type="interface:USSDNotificationManager">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="startUSSDNotification">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault name="ServiceException" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PolicyException">
+				<soap:fault name="PolicyException" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="stopUSSDNotification">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault name="ServiceException" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PolicyException">
+				<soap:fault name="PolicyException" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="USSDNotificationManagerService">
+		<wsdl:port name="USSDNotificationManager" binding="tns:USSDNotificationManagerBinding">
+			<soap:address location="http://localhost:9080/USSDNotificationManagerService/services/USSDNotificationManager"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

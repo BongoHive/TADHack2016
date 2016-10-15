@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- March 8, 2007 -->
+<wsdl:definitions
+   name="parlayx_payment_volume_charging_interface"
+   targetNamespace="http://www.csapi.org/wsdl/parlayx/payment/volume_charging/v3_1/interface"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:parlayx_payment_volume_charging="http://www.csapi.org/wsdl/parlayx/payment/volume_charging/v3_1/interface"
+   xmlns:parlayx_common_faults="http://www.csapi.org/wsdl/parlayx/common/v3_0/faults"
+   xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v3_1"
+   xmlns:parlayx_payment_xsd="http://www.csapi.org/schema/parlayx/payment/v3_0"
+   xmlns:parlayx_payment_volume_charging_local_xsd="http://www.csapi.org/schema/parlayx/payment/volume_charging/v3_1/local">
+
+   <wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/common/v3_0/faults" location="parlayx_common_faults_3_0.wsdl"/>
+
+   <wsdl:types>
+      <xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/parlayx/payment/volume_charging/v3_1/local">
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/common/v3_1" schemaLocation="parlayx_common_types_3_1.xsd"/>
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/payment/v3_0" schemaLocation="parlayx_payment_types_3_0.xsd"/>
+
+         <xsd:element name="chargeVolume" type="parlayx_payment_volume_charging_local_xsd:chargeVolume"/>
+         <xsd:complexType name="chargeVolume">
+            <xsd:sequence>
+               <xsd:element name="endUserIdentifier" type="xsd:anyURI"/>
+               <xsd:element name="volume" type="xsd:long"/>
+               <xsd:element name="billingText" type="xsd:string"/>
+               <xsd:element name="referenceCode" type="xsd:string"/>
+               <xsd:element name="parameters" type="parlayx_payment_xsd:Property" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="chargeVolumeResponse" type="parlayx_payment_volume_charging_local_xsd:chargeVolumeResponse"/>
+         <xsd:complexType name="chargeVolumeResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+
+         <xsd:element name="getAmount" type="parlayx_payment_volume_charging_local_xsd:getAmount"/>
+         <xsd:complexType name="getAmount">
+            <xsd:sequence>
+               <xsd:element name="endUserIdentifier" type="xsd:anyURI"/>
+               <xsd:element name="volume" type="xsd:long"/>
+               <xsd:element name="parameters" type="parlayx_payment_xsd:Property" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="getAmountResponse" type="parlayx_payment_volume_charging_local_xsd:getAmountResponse"/>
+         <xsd:complexType name="getAmountResponse">
+            <xsd:sequence>
+               <xsd:element name="result" type="parlayx_common_xsd:ChargingInformation"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="refundVolume" type="parlayx_payment_volume_charging_local_xsd:refundVolume"/>
+         <xsd:complexType name="refundVolume">
+            <xsd:sequence>
+               <xsd:element name="endUserIdentifier" type="xsd:anyURI"/>
+               <xsd:element name="volume" type="xsd:long"/>
+               <xsd:element name="billingText" type="xsd:string"/>
+               <xsd:element name="referenceCode" type="xsd:string"/>
+               <xsd:element name="parameters" type="parlayx_payment_xsd:Property" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="refundVolumeResponse" type="parlayx_payment_volume_charging_local_xsd:refundVolumeResponse"/>
+         <xsd:complexType name="refundVolumeResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+
+         <xsd:element name="chargeSplitVolume" type="parlayx_payment_volume_charging_local_xsd:chargeSplitVolume"/>
+         <xsd:complexType name="chargeSplitVolume">
+            <xsd:sequence>
+               <xsd:element name="splitInfo" type="parlayx_payment_xsd:SplitType" minOccurs="1" maxOccurs="unbounded"/>
+               <xsd:element name="volume" type="xsd:long"/>
+               <xsd:element name="billingText" type="xsd:string"/>
+               <xsd:element name="referenceCode" type="xsd:string"/>
+               <xsd:element name="parameters" type="parlayx_payment_xsd:Property" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="chargeSplitVolumeResponse" type="parlayx_payment_volume_charging_local_xsd:chargeSplitVolumeResponse"/>
+         <xsd:complexType name="chargeSplitVolumeResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+      </xsd:schema>
+   </wsdl:types>
+
+   <wsdl:message name="VolumeCharging_chargeVolumeRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_volume_charging_local_xsd:chargeVolume"/>
+   </wsdl:message>
+
+   <wsdl:message name="VolumeCharging_chargeVolumeResponse">
+      <wsdl:part name="result" element="parlayx_payment_volume_charging_local_xsd:chargeVolumeResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="VolumeCharging_getAmountRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_volume_charging_local_xsd:getAmount"/>
+   </wsdl:message>
+
+   <wsdl:message name="VolumeCharging_getAmountResponse">
+      <wsdl:part name="result" element="parlayx_payment_volume_charging_local_xsd:getAmountResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="VolumeCharging_refundVolumeRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_volume_charging_local_xsd:refundVolume"/>
+   </wsdl:message>
+
+   <wsdl:message name="VolumeCharging_refundVolumeResponse">
+      <wsdl:part name="result" element="parlayx_payment_volume_charging_local_xsd:refundVolumeResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="VolumeCharging_chargeSplitVolumeRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_volume_charging_local_xsd:chargeSplitVolume"/>
+   </wsdl:message>
+
+   <wsdl:message name="VolumeCharging_chargeSplitVolumeResponse">
+      <wsdl:part name="result" element="parlayx_payment_volume_charging_local_xsd:chargeSplitVolumeResponse"/>
+   </wsdl:message>
+
+   <wsdl:portType name="VolumeCharging">
+      <wsdl:operation name="chargeVolume">
+         <wsdl:input message="parlayx_payment_volume_charging:VolumeCharging_chargeVolumeRequest"/>
+         <wsdl:output message="parlayx_payment_volume_charging:VolumeCharging_chargeVolumeResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="getAmount">
+         <wsdl:input message="parlayx_payment_volume_charging:VolumeCharging_getAmountRequest"/>
+         <wsdl:output message="parlayx_payment_volume_charging:VolumeCharging_getAmountResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="refundVolume">
+         <wsdl:input message="parlayx_payment_volume_charging:VolumeCharging_refundVolumeRequest"/>
+         <wsdl:output message="parlayx_payment_volume_charging:VolumeCharging_refundVolumeResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="chargeSplitVolume">
+         <wsdl:input message="parlayx_payment_volume_charging:VolumeCharging_chargeSplitVolumeRequest"/>
+         <wsdl:output message="parlayx_payment_volume_charging:VolumeCharging_chargeSplitVolumeResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

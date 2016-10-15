@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- July 14, 2005 -->
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.csapi.org/wsdl/parlayx/ussd/redirect/v1_0/service" xmlns:interface="http://www.csapi.org/wsdl/parlayx/ussd/redirect/v1_0/interface" name="osg_ussd_redirect_service" targetNamespace="http://www.csapi.org/wsdl/parlayx/ussd/redirect/v1_0/service">
+	<wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/ussd/redirect/v1_0/interface" location="osg_ussd_redirect_interface_1_0.wsdl"/>
+	<wsdl:binding name="RedirectUssdBinding" type="interface:RedirectUssd">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="redirectUssd">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault name="ServiceException" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="PolicyException">
+				<soap:fault name="PolicyException" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>			
+	</wsdl:binding>
+	<wsdl:service name="RedirectUssdService">
+		<wsdl:port name="RedirectUssd" binding="tns:RedirectUssdBinding">
+			<soap:address location="http://localhost:9080/RedirectUssdService/services/RedirectUssd"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

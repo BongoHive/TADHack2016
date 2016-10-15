@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- March 8, 2007 -->
+<wsdl:definitions
+   name="parlayx_payment_amount_charging_interface"
+   targetNamespace="http://www.csapi.org/wsdl/parlayx/payment/amount_charging/v3_1/interface"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:parlayx_payment_amount_charging="http://www.csapi.org/wsdl/parlayx/payment/amount_charging/v3_1/interface"
+   xmlns:parlayx_common_faults="http://www.csapi.org/wsdl/parlayx/common/v3_0/faults"
+   xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v3_1"
+   xmlns:parlayx_payment_xsd="http://www.csapi.org/schema/parlayx/payment/v3_0"
+   xmlns:parlayx_payment_amount_charging_local_xsd="http://www.csapi.org/schema/parlayx/payment/amount_charging/v3_1/local">
+
+   <wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/common/v3_0/faults" location="parlayx_common_faults_3_0.wsdl"/>
+
+   <wsdl:types>
+      <xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/parlayx/payment/amount_charging/v3_1/local">
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/common/v3_1" schemaLocation="parlayx_common_types_3_1.xsd"/>
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/payment/v3_0" schemaLocation="parlayx_payment_types_3_0.xsd"/>
+
+         <xsd:element name="chargeAmount" type="parlayx_payment_amount_charging_local_xsd:chargeAmount"/>
+         <xsd:complexType name="chargeAmount">
+            <xsd:sequence>
+               <xsd:element name="endUserIdentifier" type="xsd:anyURI"/>
+               <xsd:element name="charge" type="parlayx_common_xsd:ChargingInformation"/>
+               <xsd:element name="referenceCode" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="chargeAmountResponse" type="parlayx_payment_amount_charging_local_xsd:chargeAmountResponse"/>
+         <xsd:complexType name="chargeAmountResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+
+         <xsd:element name="refundAmount" type="parlayx_payment_amount_charging_local_xsd:refundAmount"/>
+         <xsd:complexType name="refundAmount">
+            <xsd:sequence>
+               <xsd:element name="endUserIdentifier" type="xsd:anyURI"/>
+               <xsd:element name="charge" type="parlayx_common_xsd:ChargingInformation"/>
+               <xsd:element name="referenceCode" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="refundAmountResponse" type="parlayx_payment_amount_charging_local_xsd:refundAmountResponse"/>
+         <xsd:complexType name="refundAmountResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+
+         <xsd:element name="chargeSplitAmount" type="parlayx_payment_amount_charging_local_xsd:chargeSplitAmount"/>
+         <xsd:complexType name="chargeSplitAmount">
+            <xsd:sequence>
+               <xsd:element name="splitInfo" type="parlayx_payment_xsd:SplitType" minOccurs="1" maxOccurs="unbounded"/>
+               <xsd:element name="charge" type="parlayx_common_xsd:ChargingInformation"/>
+               <xsd:element name="referenceCode" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="chargeSplitAmountResponse" type="parlayx_payment_amount_charging_local_xsd:chargeSplitAmountResponse"/>
+         <xsd:complexType name="chargeSplitAmountResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+      </xsd:schema>
+   </wsdl:types>
+
+   <wsdl:message name="AmountCharging_chargeAmountRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_amount_charging_local_xsd:chargeAmount"/>
+   </wsdl:message>
+
+   <wsdl:message name="AmountCharging_chargeAmountResponse">
+      <wsdl:part name="result" element="parlayx_payment_amount_charging_local_xsd:chargeAmountResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="AmountCharging_refundAmountRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_amount_charging_local_xsd:refundAmount"/>
+   </wsdl:message>
+
+   <wsdl:message name="AmountCharging_refundAmountResponse">
+      <wsdl:part name="result" element="parlayx_payment_amount_charging_local_xsd:refundAmountResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="AmountCharging_chargeSplitAmountRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_amount_charging_local_xsd:chargeSplitAmount"/>
+   </wsdl:message>
+
+   <wsdl:message name="AmountCharging_chargeSplitAmountResponse">
+      <wsdl:part name="result" element="parlayx_payment_amount_charging_local_xsd:chargeSplitAmountResponse"/>
+   </wsdl:message>
+
+   <wsdl:portType name="AmountCharging">
+      <wsdl:operation name="chargeAmount">
+         <wsdl:input message="parlayx_payment_amount_charging:AmountCharging_chargeAmountRequest"/>
+         <wsdl:output message="parlayx_payment_amount_charging:AmountCharging_chargeAmountResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="refundAmount">
+         <wsdl:input message="parlayx_payment_amount_charging:AmountCharging_refundAmountRequest"/>
+         <wsdl:output message="parlayx_payment_amount_charging:AmountCharging_refundAmountResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="chargeSplitAmount">
+         <wsdl:input message="parlayx_payment_amount_charging:AmountCharging_chargeSplitAmountRequest"/>
+         <wsdl:output message="parlayx_payment_amount_charging:AmountCharging_chargeSplitAmountResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

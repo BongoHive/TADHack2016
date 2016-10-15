@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- March 8, 2007 -->
+<wsdl:definitions
+   name="parlayx_payment_reserve_volume_charging_interface"
+   targetNamespace="http://www.csapi.org/wsdl/parlayx/payment/reserve_volume_charging/v3_1/interface"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:parlayx_payment_reserve_volume_charging="http://www.csapi.org/wsdl/parlayx/payment/reserve_volume_charging/v3_1/interface"
+   xmlns:parlayx_common_faults="http://www.csapi.org/wsdl/parlayx/common/v3_0/faults"
+   xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v3_1"
+   xmlns:parlayx_payment_xsd="http://www.csapi.org/schema/parlayx/payment/v3_0"
+   xmlns:parlayx_payment_reserve_volume_charging_local_xsd="http://www.csapi.org/schema/parlayx/payment/reserve_volume_charging/v3_1/local">
+
+   <wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/common/v3_0/faults" location="parlayx_common_faults_3_0.wsdl"/>
+
+   <wsdl:types>
+      <xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/parlayx/payment/reserve_volume_charging/v3_1/local">
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/common/v3_1" schemaLocation="parlayx_common_types_3_1.xsd"/>
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/payment/v3_0" schemaLocation="parlayx_payment_types_3_0.xsd"/>
+
+         <xsd:element name="getAmount" type="parlayx_payment_reserve_volume_charging_local_xsd:getAmount"/>
+         <xsd:complexType name="getAmount">
+            <xsd:sequence>
+               <xsd:element name="endUserIdentifier" type="xsd:anyURI"/>
+               <xsd:element name="volume" type="xsd:long"/>
+               <xsd:element name="parameters" type="parlayx_payment_xsd:Property" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="getAmountResponse" type="parlayx_payment_reserve_volume_charging_local_xsd:getAmountResponse"/>
+         <xsd:complexType name="getAmountResponse">
+            <xsd:sequence>
+               <xsd:element name="result" type="parlayx_common_xsd:ChargingInformation"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="reserveVolume" type="parlayx_payment_reserve_volume_charging_local_xsd:reserveVolume"/>
+         <xsd:complexType name="reserveVolume">
+            <xsd:sequence>
+               <xsd:element name="endUserIdentifier" type="xsd:anyURI"/>
+               <xsd:element name="volume" type="xsd:long"/>
+               <xsd:element name="billingText" type="xsd:string"/>
+               <xsd:element name="parameters" type="parlayx_payment_xsd:Property" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="reserveVolumeResponse" type="parlayx_payment_reserve_volume_charging_local_xsd:reserveVolumeResponse"/>
+         <xsd:complexType name="reserveVolumeResponse">
+            <xsd:sequence>
+               <xsd:element name="result" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="reserveAdditionalVolume" type="parlayx_payment_reserve_volume_charging_local_xsd:reserveAdditionalVolume"/>
+         <xsd:complexType name="reserveAdditionalVolume">
+            <xsd:sequence>
+               <xsd:element name="reservationIdentifier" type="xsd:string"/>
+               <xsd:element name="volume" type="xsd:long"/>
+               <xsd:element name="billingText" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="reserveAdditionalVolumeResponse" type="parlayx_payment_reserve_volume_charging_local_xsd:reserveAdditionalVolumeResponse"/>
+         <xsd:complexType name="reserveAdditionalVolumeResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+
+         <xsd:element name="chargeReservation" type="parlayx_payment_reserve_volume_charging_local_xsd:chargeReservation"/>
+         <xsd:complexType name="chargeReservation">
+            <xsd:sequence>
+               <xsd:element name="reservationIdentifier" type="xsd:string"/>
+               <xsd:element name="volume" type="xsd:long"/>
+               <xsd:element name="billingText" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="referenceCode" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="chargeReservationResponse" type="parlayx_payment_reserve_volume_charging_local_xsd:chargeReservationResponse"/>
+         <xsd:complexType name="chargeReservationResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+
+         <xsd:element name="releaseReservation" type="parlayx_payment_reserve_volume_charging_local_xsd:releaseReservation"/>
+         <xsd:complexType name="releaseReservation">
+            <xsd:sequence>
+               <xsd:element name="reservationIdentifier" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="releaseReservationResponse" type="parlayx_payment_reserve_volume_charging_local_xsd:releaseReservationResponse"/>
+         <xsd:complexType name="releaseReservationResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+      </xsd:schema>
+   </wsdl:types>
+
+   <wsdl:message name="ReserveVolumeCharging_getAmountRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_reserve_volume_charging_local_xsd:getAmount"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveVolumeCharging_getAmountResponse">
+      <wsdl:part name="result" element="parlayx_payment_reserve_volume_charging_local_xsd:getAmountResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveVolumeCharging_reserveVolumeRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_reserve_volume_charging_local_xsd:reserveVolume"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveVolumeCharging_reserveVolumeResponse">
+      <wsdl:part name="result" element="parlayx_payment_reserve_volume_charging_local_xsd:reserveVolumeResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveVolumeCharging_reserveAdditionalVolumeRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_reserve_volume_charging_local_xsd:reserveAdditionalVolume"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveVolumeCharging_reserveAdditionalVolumeResponse">
+      <wsdl:part name="result" element="parlayx_payment_reserve_volume_charging_local_xsd:reserveAdditionalVolumeResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveVolumeCharging_chargeReservationRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_reserve_volume_charging_local_xsd:chargeReservation"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveVolumeCharging_chargeReservationResponse">
+      <wsdl:part name="result" element="parlayx_payment_reserve_volume_charging_local_xsd:chargeReservationResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveVolumeCharging_releaseReservationRequest">
+      <wsdl:part name="parameters" element="parlayx_payment_reserve_volume_charging_local_xsd:releaseReservation"/>
+   </wsdl:message>
+
+   <wsdl:message name="ReserveVolumeCharging_releaseReservationResponse">
+      <wsdl:part name="result" element="parlayx_payment_reserve_volume_charging_local_xsd:releaseReservationResponse"/>
+   </wsdl:message>
+
+   <wsdl:portType name="ReserveVolumeCharging">
+      <wsdl:operation name="getAmount">
+         <wsdl:input message="parlayx_payment_reserve_volume_charging:ReserveVolumeCharging_getAmountRequest"/>
+         <wsdl:output message="parlayx_payment_reserve_volume_charging:ReserveVolumeCharging_getAmountResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="reserveVolume">
+         <wsdl:input message="parlayx_payment_reserve_volume_charging:ReserveVolumeCharging_reserveVolumeRequest"/>
+         <wsdl:output message="parlayx_payment_reserve_volume_charging:ReserveVolumeCharging_reserveVolumeResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="reserveAdditionalVolume">
+         <wsdl:input message="parlayx_payment_reserve_volume_charging:ReserveVolumeCharging_reserveAdditionalVolumeRequest"/>
+         <wsdl:output message="parlayx_payment_reserve_volume_charging:ReserveVolumeCharging_reserveAdditionalVolumeResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="chargeReservation">
+         <wsdl:input message="parlayx_payment_reserve_volume_charging:ReserveVolumeCharging_chargeReservationRequest"/>
+         <wsdl:output message="parlayx_payment_reserve_volume_charging:ReserveVolumeCharging_chargeReservationResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="releaseReservation">
+         <wsdl:input message="parlayx_payment_reserve_volume_charging:ReserveVolumeCharging_releaseReservationRequest"/>
+         <wsdl:output message="parlayx_payment_reserve_volume_charging:ReserveVolumeCharging_releaseReservationResponse"/>
+         <wsdl:fault name="ServiceException" message="parlayx_common_faults:ServiceException"/>
+         <wsdl:fault name="PolicyException" message="parlayx_common_faults:PolicyException"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

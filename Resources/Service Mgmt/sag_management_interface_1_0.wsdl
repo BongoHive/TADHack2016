@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:sag_management_manage="http://www.csapi.org/wsdl/parlayx/management/manage/v1_0/interface"
+	xmlns:sag_management_manage_xsd="http://www.csapi.org/schema/parlayx/management/v1_0"
+	xmlns:sag_management_manage_local_xsd="http://www.csapi.org/schema/parlayx/management/manage/v1_0/local"
+	name="sag_management_interface"
+	targetNamespace="http://www.csapi.org/wsdl/parlayx/management/manage/v1_0/interface">
+	<wsdl:types>
+		<xsd:schema elementFormDefault="qualified"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="http://www.csapi.org/schema/parlayx/management/manage/v1_0/local">
+			<xsd:import namespace="http://www.csapi.org/schema/parlayx/management/v1_0"
+				schemaLocation="sag_management_types_1_0.xsd" />
+
+			<xsd:element name="createSPRequest"
+				type="sag_management_manage_local_xsd:createSPRequest" />
+			<xsd:complexType name="createSPRequest">
+				<xsd:sequence>
+					<xsd:element name="createSPReq" type="sag_management_manage_xsd:SPInfo" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="createSPResponse"
+				type="sag_management_manage_local_xsd:createSPResponse" />
+			<xsd:complexType name="createSPResponse">
+				<xsd:sequence>
+					<xsd:element name="createSPRsp"
+						type="sag_management_manage_xsd:SPResponse" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="updateSPRequest"
+				type="sag_management_manage_local_xsd:updateSPRequest" />
+			<xsd:complexType name="updateSPRequest">
+				<xsd:sequence>
+					<xsd:element name="updateSPReq" type="sag_management_manage_xsd:SPInfo" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="updateSPResponse"
+				type="sag_management_manage_local_xsd:updateSPResponse" />
+			<xsd:complexType name="updateSPResponse">
+				<xsd:sequence>
+					<xsd:element name="updateSPRsp"
+						type="sag_management_manage_xsd:SPResponse" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="deleteSPRequest"
+				type="sag_management_manage_local_xsd:deleteSPRequest" />
+			<xsd:complexType name="deleteSPRequest">
+				<xsd:sequence>
+					<xsd:element name="spid" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="deleteSPResponse"
+				type="sag_management_manage_local_xsd:deleteSPResponse" />
+			<xsd:complexType name="deleteSPResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="createServiceRequest"
+				type="sag_management_manage_local_xsd:createServiceRequest" />
+			<xsd:complexType name="createServiceRequest">
+				<xsd:sequence>
+					<xsd:element name="createServiceReq"
+						type="sag_management_manage_xsd:ServiceInfo" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="createServiceResponse"
+				type="sag_management_manage_local_xsd:createServiceResponse" />
+			<xsd:complexType name="createServiceResponse">
+				<xsd:sequence>
+					<xsd:element name="createServiceRsp"
+						type="sag_management_manage_xsd:ServiceResponse" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="updateServiceRequest"
+				type="sag_management_manage_local_xsd:updateServiceRequest" />
+			<xsd:complexType name="updateServiceRequest">
+				<xsd:sequence>
+					<xsd:element name="updateServiceReq"
+						type="sag_management_manage_xsd:ServiceInfo" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="updateServiceResponse"
+				type="sag_management_manage_local_xsd:updateServiceResponse" />
+			<xsd:complexType name="updateServiceResponse">
+				<xsd:sequence>
+					<xsd:element name="updateServiceRsp"
+						type="sag_management_manage_xsd:ServiceResponse" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="deleteServiceRequest"
+				type="sag_management_manage_local_xsd:deleteServiceRequest" />
+			<xsd:complexType name="deleteServiceRequest">
+				<xsd:sequence>
+					<xsd:element name="serviceid" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="deleteServiceResponse"
+				type="sag_management_manage_local_xsd:deleteServiceResponse" />
+			<xsd:complexType name="deleteServiceResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="createSLARequest"
+				type="sag_management_manage_local_xsd:createSLARequest" />
+			<xsd:complexType name="createSLARequest">
+				<xsd:sequence>
+					<xsd:element name="createSLAReq" type="sag_management_manage_xsd:SLAInfo" />
+				</xsd:sequence>
+			</xsd:complexType>
+			
+			<xsd:element name="createSLAResponse"
+				type="sag_management_manage_local_xsd:createSLAResponse" />
+			<xsd:complexType name="createSLAResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="updateSLARequest"
+				type="sag_management_manage_local_xsd:updateSLARequest" />
+			<xsd:complexType name="updateSLARequest">
+				<xsd:sequence>
+					<xsd:element name="updateSLAReq" type="sag_management_manage_xsd:SLAInfo" />
+				</xsd:sequence>
+			</xsd:complexType>
+			
+			<xsd:element name="updateSLAResponse"
+				type="sag_management_manage_local_xsd:updateSLAResponse" />
+			<xsd:complexType name="updateSLAResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="deleteSLARequest"
+				type="sag_management_manage_local_xsd:deleteSLARequest" />
+			<xsd:complexType name="deleteSLARequest">
+				<xsd:sequence>
+					<xsd:element name="deleteSLAReq" type="sag_management_manage_xsd:SLAInfo" />
+				</xsd:sequence>
+			</xsd:complexType>
+			
+			<xsd:element name="deleteSLAResponse"
+				type="sag_management_manage_local_xsd:deleteSLAResponse" />
+			<xsd:complexType name="deleteSLAResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="createTokenRequest"
+				type="sag_management_manage_local_xsd:createTokenRequest" />
+			<xsd:complexType name="createTokenRequest">
+				<xsd:sequence>
+					<xsd:element name="extendInfos" type="sag_management_manage_xsd:NameParameter"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xsd:element name="userID" type="sag_management_manage_xsd:UserID" />
+				</xsd:sequence>
+			</xsd:complexType>
+			
+			<xsd:element name="createTokenResponse"
+				type="sag_management_manage_local_xsd:createTokenResponse" />
+			<xsd:complexType name="createTokenResponse">
+				<xsd:sequence>
+					<xsd:element name="extendInfos" type="sag_management_manage_xsd:NameParameter"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xsd:element name="resultcode" type="xsd:int" />
+					<xsd:element name="tokenInfo" type="sag_management_manage_xsd:TokenInfo" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="updateTokenRequest"
+				type="sag_management_manage_local_xsd:updateTokenRequest" />
+			<xsd:complexType name="updateTokenRequest">
+				<xsd:sequence>
+					<xsd:element name="extendInfos" type="sag_management_manage_xsd:NameParameter"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xsd:element name="userID" type="sag_management_manage_xsd:UserID" />
+				</xsd:sequence>
+			</xsd:complexType>
+			
+			<xsd:element name="updateTokenResponse"
+				type="sag_management_manage_local_xsd:updateTokenResponse" />
+			<xsd:complexType name="updateTokenResponse">
+				<xsd:sequence>
+					<xsd:element name="extendInfos" type="sag_management_manage_xsd:NameParameter"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xsd:element name="resultcode" type="xsd:int" />
+					<xsd:element name="tokenInfo" type="sag_management_manage_xsd:TokenInfo" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="getTokenRequest"
+				type="sag_management_manage_local_xsd:getTokenRequest" />
+			<xsd:complexType name="getTokenRequest">
+				<xsd:sequence>
+					<xsd:element name="extendInfos" type="sag_management_manage_xsd:NameParameter"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xsd:element name="userID" type="sag_management_manage_xsd:UserID" />
+				</xsd:sequence>
+			</xsd:complexType>
+			
+			<xsd:element name="getTokenResponse"
+				type="sag_management_manage_local_xsd:getTokenResponse" />
+			<xsd:complexType name="getTokenResponse">
+				<xsd:sequence>
+					<xsd:element name="extendInfos" type="sag_management_manage_xsd:NameParameter"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xsd:element name="resultcode" type="xsd:int" />
+					<xsd:element name="tokenInfo" type="sag_management_manage_xsd:TokenInfo" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="isCustomerRequest"
+				type="sag_management_manage_local_xsd:isCustomerRequest" />
+			<xsd:complexType name="isCustomerRequest">
+				<xsd:sequence>
+					<xsd:element name="MSISDN" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			
+			<xsd:element name="isCustomerResponse"
+				type="sag_management_manage_local_xsd:isCustomerResponse" />
+			<xsd:complexType name="isCustomerResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:complexType>
+			
+			<xsd:element name="getUserProfileRequest"
+				type="sag_management_manage_local_xsd:getUserProfileRequest" />
+			<xsd:complexType name="getUserProfileRequest">
+				<xsd:sequence>
+					<xsd:element name="MSISDN" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			
+			<xsd:element name="getUserProfileResponse"
+				type="sag_management_manage_local_xsd:getUserProfileResponse" />
+			<xsd:complexType name="getUserProfileResponse">
+				<xsd:sequence>
+					<xsd:element name="userProfile" type="sag_management_manage_xsd:UserProfile" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="management_createSPRequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:createSPRequest" />
+	</wsdl:message>
+	<wsdl:message name="management_createSPResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:createSPResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="management_updateSPRequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:updateSPRequest" />
+	</wsdl:message>
+	<wsdl:message name="management_updateSPResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:updateSPResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="management_deleteSPRequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:deleteSPRequest" />
+	</wsdl:message>
+	<wsdl:message name="management_deleteSPResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:deleteSPResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="management_createServiceRequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:createServiceRequest" />
+	</wsdl:message>
+	<wsdl:message name="management_createServiceResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:createServiceResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="management_updateServiceRequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:updateServiceRequest" />
+	</wsdl:message>
+	<wsdl:message name="management_updateServiceResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:updateServiceResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="management_deleteServiceRequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:deleteServiceRequest" />
+	</wsdl:message>
+	<wsdl:message name="management_deleteServiceResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:deleteServiceResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="management_createSLARequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:createSLARequest" />
+	</wsdl:message>
+	<wsdl:message name="management_createSLAResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:createSLAResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="management_updateSLARequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:updateSLARequest" />
+	</wsdl:message>
+	<wsdl:message name="management_updateSLAResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:updateSLAResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="management_deleteSLARequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:deleteSLARequest" />
+	</wsdl:message>
+	<wsdl:message name="management_deleteSLAResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:deleteSLAResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="management_createTokenRequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:createTokenRequest" />
+	</wsdl:message>
+	<wsdl:message name="management_createTokenResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:createTokenResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="management_updateTokenRequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:updateTokenRequest" />
+	</wsdl:message>
+	<wsdl:message name="management_updateTokenResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:updateTokenResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="management_getTokenRequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:getTokenRequest" />
+	</wsdl:message>
+	<wsdl:message name="management_getTokenResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:getTokenResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="management_isCustomerRequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:isCustomerRequest" />
+	</wsdl:message>
+	<wsdl:message name="management_isCustomerResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:isCustomerResponse" />
+	</wsdl:message>
+	
+		<wsdl:message name="management_getUserProfileRequest">
+		<wsdl:part name="parameters"
+			element="sag_management_manage_local_xsd:getUserProfileRequest" />
+	</wsdl:message>
+	<wsdl:message name="management_getUserProfileResponse">
+		<wsdl:part name="result"
+			element="sag_management_manage_local_xsd:getUserProfileResponse" />
+	</wsdl:message>
+
+
+	<wsdl:portType name="Management">
+		<wsdl:operation name="createSP">
+			<wsdl:input message="sag_management_manage:management_createSPRequest" />
+			<wsdl:output message="sag_management_manage:management_createSPResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="updateSP">
+			<wsdl:input message="sag_management_manage:management_updateSPRequest" />
+			<wsdl:output message="sag_management_manage:management_updateSPResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="deleteSP">
+			<wsdl:input message="sag_management_manage:management_deleteSPRequest" />
+			<wsdl:output message="sag_management_manage:management_deleteSPResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="createService">
+			<wsdl:input message="sag_management_manage:management_createServiceRequest" />
+			<wsdl:output message="sag_management_manage:management_createServiceResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="updateService">
+			<wsdl:input message="sag_management_manage:management_updateServiceRequest" />
+			<wsdl:output message="sag_management_manage:management_updateServiceResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="deleteService">
+			<wsdl:input message="sag_management_manage:management_deleteServiceRequest" />
+			<wsdl:output message="sag_management_manage:management_deleteServiceResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="createSLA">
+			<wsdl:input message="sag_management_manage:management_createSLARequest" />
+			<wsdl:output message="sag_management_manage:management_createSLAResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="updateSLA">
+			<wsdl:input message="sag_management_manage:management_updateSLARequest" />
+			<wsdl:output message="sag_management_manage:management_updateSLAResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="deleteSLA">
+			<wsdl:input message="sag_management_manage:management_deleteSLARequest" />
+			<wsdl:output message="sag_management_manage:management_deleteSLAResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="createToken">
+			<wsdl:input message="sag_management_manage:management_createTokenRequest" />
+			<wsdl:output message="sag_management_manage:management_createTokenResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="updateToken">
+			<wsdl:input message="sag_management_manage:management_updateTokenRequest" />
+			<wsdl:output message="sag_management_manage:management_updateTokenResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="getToken">
+			<wsdl:input message="sag_management_manage:management_getTokenRequest" />
+			<wsdl:output message="sag_management_manage:management_getTokenResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="isCustomer">
+			<wsdl:input message="sag_management_manage:management_isCustomerRequest" />
+			<wsdl:output message="sag_management_manage:management_isCustomerResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="getUserProfile">
+			<wsdl:input message="sag_management_manage:management_getUserProfileRequest" />
+			<wsdl:output message="sag_management_manage:management_getUserProfileResponse" />
+		</wsdl:operation>
+
+
+	</wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+   name="sag_subscribe_service"
+   targetNamespace="http://www.csapi.org/wsdl/parlayx/subscribe/manage/v1_0/service"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:tns="http://www.csapi.org/wsdl/parlayx/subscribe/manage/v1_0/service"
+   xmlns:interface="http://www.csapi.org/wsdl/parlayx/subscribe/manage/v1_0/interface">
+
+   <wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/subscribe/manage/v1_0/interface" location="sag_subscribe_interface_1_0.wsdl"/>
+
+   <wsdl:binding name="SubscribeManageBinding" type="interface:SubscribeManage">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="subscribeService">
+         <soap:operation soapAction="" style="document"/>
+            <wsdl:input>
+               <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+               <soap:body use="literal"/>
+            </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="unSubscribeService">
+         <soap:operation soapAction="" style="document"/>
+            <wsdl:input>
+               <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+               <soap:body use="literal"/>
+            </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="subscribeProduct">
+         <soap:operation soapAction="" style="document"/>
+            <wsdl:input>
+               <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+               <soap:body use="literal"/>
+            </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="unSubscribeProduct">
+         <soap:operation soapAction="" style="document"/>
+            <wsdl:input>
+               <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+               <soap:body use="literal"/>
+            </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+      
+
+   <wsdl:service name="SubscribeManageService">
+      <wsdl:port name="SubscribeManage" binding="tns:SubscribeManageBinding">
+         <soap:address location="http://localhost:9080/SubscribeManageService/services/SubscribeManage"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

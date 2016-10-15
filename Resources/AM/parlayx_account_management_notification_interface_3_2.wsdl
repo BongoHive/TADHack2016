@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- March 8, 2007 -->
+<wsdl:definitions
+   name="account_management_notification_interface"
+   targetNamespace="http://www.csapi.org/wsdl/parlayx/account_management/notification/v3_2/interface"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:account_management_notification="http://www.csapi.org/wsdl/parlayx/account_management/notification/v3_2/interface"
+   xmlns:parlayx_account_management_xsd="http://www.csapi.org/schema/parlayx/account_management/v3_0"
+   xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v3_1"
+   xmlns:account_management_notification_local_xsd="http://www.csapi.org/schema/parlayx/account_management/notification/v3_2/local">
+
+   <wsdl:types>
+      <xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/parlayx/account_management/notification/v3_2/local">
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/account_management/v3_0" schemaLocation="parlayx_account_management_types_3_0.xsd"/>
+         <xsd:import namespace="http://www.csapi.org/schema/parlayx/common/v3_1" schemaLocation="parlayx_common_types_3_1.xsd"/>
+
+         <xsd:element name="accountCharged" type="account_management_notification_local_xsd:accountCharged"/>
+         <xsd:complexType name="accountCharged">
+            <xsd:sequence>
+               <xsd:element name="correlator" type="xsd:string"/>
+               <xsd:element name="amount" type="xsd:decimal"/>
+               <xsd:element name="balanceType" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="accountChargedResponse" type="account_management_notification_local_xsd:accountChargedResponse"/>
+         <xsd:complexType name="accountChargedResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+
+         <xsd:element name="accountRecharged" type="account_management_notification_local_xsd:accountRecharged"/>
+         <xsd:complexType name="accountRecharged">
+            <xsd:sequence>
+               <xsd:element name="correlator" type="xsd:string"/>
+               <xsd:element name="amount" type="xsd:decimal"/>
+               <xsd:element name="balanceType" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="accountRechargedResponse" type="account_management_notification_local_xsd:accountRechargedResponse"/>
+         <xsd:complexType name="accountRechargedResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+
+         <xsd:element name="accountLow" type="account_management_notification_local_xsd:accountLow"/>
+         <xsd:complexType name="accountLow">
+            <xsd:sequence>
+               <xsd:element name="correlator" type="xsd:string"/>
+               <xsd:element name="balance" type="parlayx_account_management_xsd:Balance" minOccurs="1" maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+
+         <xsd:element name="accountLowResponse" type="account_management_notification_local_xsd:accountLowResponse"/>
+         <xsd:complexType name="accountLowResponse">
+            <xsd:sequence/>
+         </xsd:complexType>
+      </xsd:schema>
+   </wsdl:types>
+
+   <wsdl:message name="AccountManagementNotification_accountChargedRequest">
+      <wsdl:part name="parameters" element="account_management_notification_local_xsd:accountCharged"/>
+   </wsdl:message>
+
+   <wsdl:message name="AccountManagementNotification_accountChargedResponse">
+      <wsdl:part name="result" element="account_management_notification_local_xsd:accountChargedResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="AccountManagementNotification_accountRechargedRequest">
+      <wsdl:part name="parameters" element="account_management_notification_local_xsd:accountRecharged"/>
+   </wsdl:message>
+
+   <wsdl:message name="AccountManagementNotification_accountRechargedResponse">
+      <wsdl:part name="result" element="account_management_notification_local_xsd:accountRechargedResponse"/>
+   </wsdl:message>
+
+   <wsdl:message name="AccountManagementNotification_accountLowRequest">
+      <wsdl:part name="parameters" element="account_management_notification_local_xsd:accountLow"/>
+   </wsdl:message>
+
+   <wsdl:message name="AccountManagementNotification_accountLowResponse">
+      <wsdl:part name="result" element="account_management_notification_local_xsd:accountLowResponse"/>
+   </wsdl:message>
+
+   <wsdl:portType name="AccountManagementNotification">
+      <wsdl:operation name="accountCharged">
+         <wsdl:input message="account_management_notification:AccountManagementNotification_accountChargedRequest"/>
+         <wsdl:output message="account_management_notification:AccountManagementNotification_accountChargedResponse"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="accountRecharged">
+         <wsdl:input message="account_management_notification:AccountManagementNotification_accountRechargedRequest"/>
+         <wsdl:output message="account_management_notification:AccountManagementNotification_accountRechargedResponse"/>
+      </wsdl:operation>
+
+      <wsdl:operation name="accountLow">
+         <wsdl:input message="account_management_notification:AccountManagementNotification_accountLowRequest"/>
+         <wsdl:output message="account_management_notification:AccountManagementNotification_accountLowResponse"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

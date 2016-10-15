@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- July 14, 2005 -->
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:osg_ussd_send="http://www.csapi.org/wsdl/parlayx/ussd/send/v1_0/interface" xmlns:osg_common_faults="http://www.csapi.org/wsdl/parlayx/common/v2_0/faults" xmlns:osg_ussd_xsd="http://www.csapi.org/schema/parlayx/ussd/v1_0" xmlns:osg_common_xsd="http://www.csapi.org/schema/parlayx/common/v2_1" xmlns:parlayx_common_xsd="http://www.csapi.org/schema/parlayx/common/v2_1" xmlns:parlayx_common_head_xsd="http://www.huawei.com.cn/schema/common/v2_1" xmlns:osg_ussd_send_local_xsd="http://www.csapi.org/schema/parlayx/ussd/send/v1_0/local" name="osg_ussd_send_interface" targetNamespace="http://www.csapi.org/wsdl/parlayx/ussd/send/v1_0/interface">
+	<wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/common/v2_0/faults" location="parlayx_common_faults_2_0.wsdl"/>
+	<wsdl:types>
+		<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/parlayx/ussd/send/v1_0/local">
+			<xsd:import namespace="http://www.csapi.org/schema/parlayx/common/v2_1" schemaLocation="parlayx_common_types_2_1.xsd"/>
+			<xsd:complexType name="NamedParameterList">
+				<xsd:sequence>
+					<xsd:element name="item" type="osg_ussd_send_local_xsd:NamedParameter" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="NamedParameter">
+				<xsd:sequence>
+					<xsd:element name="key" type="xsd:string"/>
+					<xsd:element name="value" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="sendUssd" type="osg_ussd_send_local_xsd:sendUssd"/>
+			<xsd:complexType name="sendUssd">
+				<xsd:sequence>
+					<xsd:element name="msgType" type="xsd:int"/>
+					<xsd:element name="senderCB" type="xsd:string"/>
+					<xsd:element name="receiveCB" type="xsd:string"/>
+					<xsd:element name="ussdOpType" type="xsd:int"/>
+					<xsd:element name="msIsdn" type="xsd:string"/>
+					<xsd:element name="serviceCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+					<xsd:element name="codeScheme" type="xsd:int"/>
+					<xsd:element name="ussdString" type="xsd:string"/>
+					<xsd:element name="endPoint" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="extenionInfo" type="osg_ussd_send_local_xsd:NamedParameterList" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="sendUssdResponse" type="osg_ussd_send_local_xsd:sendUssdResponse"/>
+			<xsd:complexType name="sendUssdResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="sendUssdAbort" type="osg_ussd_send_local_xsd:sendUssdAbort"/>
+			<xsd:complexType name="sendUssdAbort">
+				<xsd:sequence>
+					<xsd:element name="senderCB" type="xsd:string"/>
+					<xsd:element name="receiveCB" type="xsd:string"/>
+					<xsd:element name="abortReason" type="xsd:string"/>
+					<xsd:element name="extenionInfo" type="osg_ussd_send_local_xsd:NamedParameterList" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="sendUssdAbortResponse" type="osg_ussd_send_local_xsd:sendUssdAbortResponse"/>
+			<xsd:complexType name="sendUssdAbortResponse">
+				<xsd:sequence/>
+			</xsd:complexType>
+			<xsd:element name="sendUssdSwitch" type="osg_ussd_send_local_xsd:sendUssdSwitch"/>
+			<xsd:complexType name="sendUssdSwitch">
+				<xsd:sequence>
+					<xsd:element name="senderCB" type="xsd:string"/>
+					<xsd:element name="receiveCB" type="xsd:string"/>
+					<xsd:element name="SwitchMode" type="xsd:int"/>
+					<xsd:element name="msIsdn" type="xsd:string"/>
+					<xsd:element name="serviceCode" type="xsd:string"/>
+					<xsd:element name="codeScheme" type="xsd:int"/>
+					<xsd:element name="ussdString" type="xsd:string"/>
+					<xsd:element name="extenionInfo" type="osg_ussd_send_local_xsd:NamedParameterList" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="sendUssdSwitchResponse" type="osg_ussd_send_local_xsd:sendUssdSwitchResponse"/>
+			<xsd:complexType name="sendUssdSwitchResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="SendUssd_sendUssdRequest">
+		<wsdl:part name="parameters" element="osg_ussd_send_local_xsd:sendUssd"/>
+	</wsdl:message>
+	<wsdl:message name="SendUssd_sendUssdResponse">
+		<wsdl:part name="result" element="osg_ussd_send_local_xsd:sendUssdResponse"/>
+	</wsdl:message>
+	<wsdl:message name="SendUssd_sendUssdAbortRequest">
+		<wsdl:part name="parameters" element="osg_ussd_send_local_xsd:sendUssdAbort"/>
+	</wsdl:message>
+	<wsdl:message name="SendUssd_sendUssdAbortResponse">
+		<wsdl:part name="result" element="osg_ussd_send_local_xsd:sendUssdAbortResponse"/>
+	</wsdl:message>
+	<wsdl:message name="SendUssd_sendUssdSwitchRequest">
+		<wsdl:part name="parameters" element="osg_ussd_send_local_xsd:sendUssdSwitch"/>
+	</wsdl:message>
+	<wsdl:message name="SendUssd_sendUssdSwitchResponse">
+		<wsdl:part name="result" element="osg_ussd_send_local_xsd:sendUssdSwitchResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="SendUssd">
+		<wsdl:operation name="sendUssd">
+			<wsdl:input message="osg_ussd_send:SendUssd_sendUssdRequest"/>
+			<wsdl:output message="osg_ussd_send:SendUssd_sendUssdResponse"/>
+			<wsdl:fault name="ServiceException" message="osg_common_faults:ServiceException"/>
+			<wsdl:fault name="PolicyException" message="osg_common_faults:PolicyException"/>
+		</wsdl:operation>
+		<wsdl:operation name="sendUssdAbort">
+			<wsdl:input message="osg_ussd_send:SendUssd_sendUssdAbortRequest"/>
+			<wsdl:output message="osg_ussd_send:SendUssd_sendUssdAbortResponse"/>
+			<wsdl:fault name="ServiceException" message="osg_common_faults:ServiceException"/>
+			<wsdl:fault name="PolicyException" message="osg_common_faults:PolicyException"/>
+		</wsdl:operation>
+		<wsdl:operation name="sendUssdSwitch">
+			<wsdl:input message="osg_ussd_send:SendUssd_sendUssdSwitchRequest"/>
+			<wsdl:output message="osg_ussd_send:SendUssd_sendUssdSwitchResponse"/>
+			<wsdl:fault name="ServiceException" message="osg_common_faults:ServiceException"/>
+			<wsdl:fault name="PolicyException" message="osg_common_faults:PolicyException"/>
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

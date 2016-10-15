@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- January 5, 2006 -->
+<xsd:schema xmlns:parlayx_common_head_xsd="http://www.huawei.com.cn/schema/common/v2_1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.huawei.com.cn/schema/common/v2_1" elementFormDefault="qualified">
+	<xsd:element name="RequestSOAPHeader" type="parlayx_common_head_xsd:RequestSOAPHeader"/>
+	<xsd:complexType name="RequestSOAPHeader">
+		<xsd:sequence>
+			<xsd:element name="spId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="spPassword" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="serviceId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="timeStamp" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="OA" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="oauth_token" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="FA" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="token" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="watcher" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="presentity" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="authId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="linkid" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="presentid" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="bundleID" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="NotifySOAPHeader" type="parlayx_common_head_xsd:NotifySOAPHeader"/>
+	<xsd:complexType name="NotifySOAPHeader">
+		<xsd:sequence>
+			<xsd:element name="spRevId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="spRevpassword" type="xsd:string" minOccurs="0"/>		
+			<xsd:element name="spId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="serviceId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="timeStamp" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="linkid" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="OperatorID" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

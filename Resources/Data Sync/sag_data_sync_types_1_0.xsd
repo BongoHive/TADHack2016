@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:sag_data_sync_xsd="http://www.csapi.org/schema/parlayx/data/v1_0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/parlayx/data/v1_0">
+	<xsd:complexType name="ProductDetail">
+		<xsd:sequence>
+			<xsd:element name="notifySPURL" type="xsd:string"/>
+			<xsd:element name="operationTime" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="subscriptionValidTime" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="subscriptionAddtionalInfo" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="UserID">
+		<xsd:sequence>
+			<xsd:element name="ID" type="xsd:string"/>
+			<xsd:element name="type" type="xsd:int"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NamedParameterList">
+		<xsd:sequence>
+			<xsd:element name="item" type="sag_data_sync_xsd:NamedParameter" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NamedParameter">
+		<xsd:sequence>
+			<xsd:element name="key" type="xsd:string"/>
+			<xsd:element name="value" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

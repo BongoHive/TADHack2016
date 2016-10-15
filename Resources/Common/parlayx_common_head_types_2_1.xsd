@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- January 5, 2006 -->
+<xsd:schema xmlns:parlayx_common_head_xsd="http://www.huawei.com.cn/schema/common/v2_1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.huawei.com.cn/schema/common/v2_1" elementFormDefault="qualified">
+    <xsd:complexType name="NamedParameter">
+		<xsd:sequence>
+			<xsd:element name="key" type="xsd:string"/>
+			<xsd:element name="value" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NamedParameterList">
+		<xsd:sequence>
+			<xsd:element name="item" type="parlayx_common_head_xsd:NamedParameter" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="RequestSOAPHeader" type="parlayx_common_head_xsd:RequestSOAPHeader"/>
+	<xsd:complexType name="RequestSOAPHeader">
+		<xsd:sequence>
+			<xsd:element name="spId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="spPassword" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="serviceId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="timeStamp" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="OA" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="oauth_token" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="FA" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="token" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="watcher" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="presentity" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="authId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="linkid" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="presentid" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="protocol_id" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="reserveTime" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="spReqID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="isTrusted" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="subReqID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="traceUniqueID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="msgType" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="isNeedCharge" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="requestor" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="spStatus" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="flowControl" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="statusCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="cmcc_spcode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="cmcc_servicecode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="cmcc_chargeId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Fee_UserType" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Fee_terminal_Id" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="bundleID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="endUserDAAccountId" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="FeeType" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="FeeCode" type="xsd:string" minOccurs="0"/>						
+			<xsd:element name="operatorID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="FlashMessage" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="MorelatetoMTFlag" type="xsd:string" minOccurs="0"/>	
+            <xsd:element name="task_id" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="clientID" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="SourceFlag" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="BeginTime" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="protocolID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="namedParameters" type="parlayx_common_head_xsd:NamedParameterList" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="NotifySOAPHeader" type="parlayx_common_head_xsd:NotifySOAPHeader"/>
+	<xsd:complexType name="NotifySOAPHeader">
+		<xsd:sequence>
+			<xsd:element name="spId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="serviceId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="endPoint" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="timeStamp" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="spRevId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="spRevpassword" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="traceUniqueID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="linkid" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="subReqID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="statusCode" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="seqNum" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="maxNum" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="currentNum" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="transactionID" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="OperatorID" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="FA" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="OriginateType" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="watcher" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="SaleMobile" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="RetailerCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="SellerId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="payMethod" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

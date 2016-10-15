@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:sag_management_xsd="http://www.csapi.org/schema/parlayx/management/v1_0"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/parlayx/management/v1_0">
+
+	<xsd:complexType name="SPInfo">
+		<xsd:sequence>
+			<xsd:element name="Email" type="xsd:string" minOccurs="0"
+				maxOccurs="1" />
+			<xsd:element name="orderNotifyURL" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="phoneNumber" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="spDesc" type="sag_management_xsd:DialectInfo"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="spID" type="xsd:string" minOccurs="0"
+				maxOccurs="1" />
+			<xsd:element name="spName" type="sag_management_xsd:DialectInfo"
+				minOccurs="1" maxOccurs="unbounded" />
+			<xsd:element name="spPassword" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="countryID" type="xsd:int" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="SPResponse">
+		<xsd:sequence>
+			<xsd:element name="resultCode" type="xsd:int" />
+			<xsd:element name="spID" type="xsd:string" minOccurs="0"
+				maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="NameParameter">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="value" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ServiceCountryInfo">
+		<xsd:sequence>
+			<xsd:element name="countryID" type="xsd:int" />
+			<xsd:element name="rental" type="xsd:float" minOccurs="0"
+				maxOccurs="1" />
+			<xsd:element name="eventRate" type="sag_management_xsd:RateInfo"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="smsMOaccesscode" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="smsMTaccesscode" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="mmsMOaccesscode" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="mmsMTaccesscode" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="wappushMTaccesscode" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="currencyCode" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="extendInfos" type="sag_management_xsd:NameParameter"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="RateInfo">
+		<xsd:sequence>
+			<xsd:element name="capability" type="xsd:int" />
+			<xsd:element name="rate" type="xsd:float" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ServiceInfo">
+		<xsd:sequence>
+			<xsd:element name="serviceID" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="serviceName" type="sag_management_xsd:DialectInfo"
+				minOccurs="1" maxOccurs="unbounded" />
+			<xsd:element name="serviceDesc" type="sag_management_xsd:DialectInfo"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="spID" type="xsd:string" />
+			<xsd:element name="serviceType" type="xsd:int" minOccurs="1"
+				maxOccurs="unbounded" />
+			<xsd:element name="payer" type="xsd:int" minOccurs="0"
+				maxOccurs="1" />
+			<xsd:element name="orderNotifyURL" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="smsMOaccesscode" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="smsMTaccesscode" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="mmsMOaccesscode" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="mmsMTaccesscode" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="wappushMTaccesscode" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="serviceCountryInfo" type="sag_management_xsd:ServiceCountryInfo"
+				minOccurs="1" maxOccurs="unbounded" />
+			<xsd:element name="extendInfos" type="sag_management_xsd:NameParameter"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ServiceResponse">
+		<xsd:sequence>
+			<xsd:element name="resultCode" type="xsd:int" />
+			<xsd:element name="serviceID" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="productID" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="DialectInfo">
+		<xsd:sequence>
+			<xsd:element name="langInfo" type="sag_management_xsd:LangInfo" />
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="value" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="LangInfo">
+		<xsd:sequence>
+			<xsd:element name="language" type="xsd:string" />
+			<xsd:element name="country" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="SLAType">
+		<xsd:sequence>
+			<xsd:element name="slaID" type="xsd:string" />
+			<xsd:element name="slaValue" type="xsd:string" minOccurs="0"
+				maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="SLAInfo">
+		<xsd:sequence>
+			<xsd:element name="serviceID" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="slaList" type="sag_management_xsd:SLAType"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="slaType" type="xsd:int" />
+			<xsd:element name="spID" type="xsd:string" />
+			<xsd:element name="countryID" type="xsd:int" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="UserID">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:string" />
+			<xsd:element name="type" type="xsd:int" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="TokenInfo">
+		<xsd:sequence>
+			<xsd:element name="extendInfos" type="sag_management_xsd:NameParameter"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="tokenID" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="UserProfile">
+		<xsd:sequence>
+		<xsd:element name="userID" type="sag_management_xsd:UserID" />
+		<xsd:element name="payType" type="xsd:int" />
+		<xsd:element name="userBrand" type="xsd:int" />
+			<xsd:element name="extendInfos" type="sag_management_xsd:NameParameter"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+</xsd:schema>

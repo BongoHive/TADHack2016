@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- July 14, 2005 -->
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:osg_ussd_notification="http://www.csapi.org/wsdl/parlayx/ussd/notification/v1_0/interface" xmlns:osg_common_faults="http://www.csapi.org/wsdl/parlayx/common/v2_0/faults" xmlns:osg_ussd_xsd="http://www.csapi.org/schema/parlayx/ussd/v1_0" xmlns:osg_common_xsd="http://www.csapi.org/schema/parlayx/common/v2_1" xmlns:osg_ussd_notification_local_xsd="http://www.csapi.org/schema/parlayx/ussd/notification/v1_0/local" name="osg_ussd_notification_interface" targetNamespace="http://www.csapi.org/wsdl/parlayx/ussd/notification/v1_0/interface">
+	<wsdl:import namespace="http://www.csapi.org/wsdl/parlayx/common/v2_0/faults" location="parlayx_common_faults_2_0.wsdl"/>
+	<wsdl:types>
+		<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/parlayx/ussd/notification/v1_0/local">
+			<xsd:import namespace="http://www.csapi.org/schema/parlayx/common/v2_1" schemaLocation="parlayx_common_types_2_1.xsd"/>
+			<xsd:complexType name="NamedParameterList">
+				<xsd:sequence>
+					<xsd:element name="item" type="osg_ussd_notification_local_xsd:NamedParameter" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="NamedParameter">
+				<xsd:sequence>
+					<xsd:element name="key" type="xsd:string"/>
+					<xsd:element name="value" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="notifyUssdReception" type="osg_ussd_notification_local_xsd:notifyUssdReception"/>
+			<xsd:complexType name="notifyUssdReception">
+				<xsd:sequence>
+					<xsd:element name="msgType" type="xsd:int"/>
+					<xsd:element name="senderCB" type="xsd:string"/>
+					<xsd:element name="receiveCB" type="xsd:string"/>
+					<xsd:element name="ussdOpType" type="xsd:int"/>
+					<xsd:element name="msIsdn" type="xsd:string"/>
+					<xsd:element name="serviceCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+					<xsd:element name="codeScheme" type="xsd:int"/>
+					<xsd:element name="ussdString" type="xsd:string"/>
+					<xsd:element name="extenionInfo" type="osg_ussd_notification_local_xsd:NamedParameterList" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="notifyUssdReceptionResponse" type="osg_ussd_notification_local_xsd:notifyUssdReceptionResponse"/>
+			<xsd:complexType name="notifyUssdReceptionResponse">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="notifyUssdAbort" type="osg_ussd_notification_local_xsd:notifyUssdAbort"/>
+			<xsd:complexType name="notifyUssdAbort">
+				<xsd:sequence>
+					<xsd:element name="senderCB" type="xsd:string"/>
+					<xsd:element name="receiveCB" type="xsd:string"/>
+					<xsd:element name="abortReason" type="xsd:string"/>
+					<xsd:element name="extenionInfo" type="osg_ussd_notification_local_xsd:NamedParameterList" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="notifyUssdAbortResponse" type="osg_ussd_notification_local_xsd:notifyUssdAbortResponse"/>
+			<xsd:complexType name="notifyUssdAbortResponse">
+				<xsd:sequence/>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="NetworkNotify_notifyUssdReceptionRequest">
+		<wsdl:part name="parameters" element="osg_ussd_notification_local_xsd:notifyUssdReception"/>
+	</wsdl:message>
+	<wsdl:message name="NetworkNotify_notifyUssdReceptionResponse">
+		<wsdl:part name="result" element="osg_ussd_notification_local_xsd:notifyUssdReceptionResponse"/>
+	</wsdl:message>
+	<wsdl:message name="NetworkNotify_notifyUssdAbortRequest">
+		<wsdl:part name="parameters" element="osg_ussd_notification_local_xsd:notifyUssdAbort"/>
+	</wsdl:message>
+	<wsdl:message name="NetworkNotify_notifyUssdAbortResponse">
+		<wsdl:part name="result" element="osg_ussd_notification_local_xsd:notifyUssdAbortResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="NetworkNotify">
+		<wsdl:operation name="notifyUssdReception">
+			<wsdl:input message="osg_ussd_notification:NetworkNotify_notifyUssdReceptionRequest"/>
+			<wsdl:output message="osg_ussd_notification:NetworkNotify_notifyUssdReceptionResponse"/>
+			<wsdl:fault name="ServiceException" message="osg_common_faults:ServiceException"/>
+		</wsdl:operation>
+		<wsdl:operation name="notifyUssdAbort">
+			<wsdl:input message="osg_ussd_notification:NetworkNotify_notifyUssdAbortRequest"/>
+			<wsdl:output message="osg_ussd_notification:NetworkNotify_notifyUssdAbortResponse"/>
+			<wsdl:fault name="ServiceException" message="osg_common_faults:ServiceException"/>
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- June 7, 2006 -->
+<xsd:schema
+   targetNamespace="http://www.csapi.org/schema/parlayx/account_management/v3_0"
+   xmlns:parlayx_account_management_xsd="http://www.csapi.org/schema/parlayx/account_management/v3_0"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+   <xsd:complexType name="DatedTransaction">
+      <xsd:sequence>
+         <xsd:element name="transactionDate" type="xsd:dateTime"/>
+         <xsd:element name="transactionDetails" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="Balance">
+      <xsd:sequence>
+         <xsd:element name="balanceType" type="xsd:string"/>
+         <xsd:element name="amount" type="xsd:decimal"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="BalanceExpireDetails">
+      <xsd:sequence>
+         <xsd:element name="balanceType" type="xsd:string"/>
+         <xsd:element name="date" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:simpleType name="AccountChangedEvent">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Charge"/>
+         <xsd:enumeration value="Recharge"/>
+         <xsd:enumeration value="AccountLow"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+</xsd:schema>
